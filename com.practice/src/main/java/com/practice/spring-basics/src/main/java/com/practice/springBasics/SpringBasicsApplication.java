@@ -13,14 +13,9 @@ public class SpringBasicsApplication {
 	public static void main(String[] args) {
 
 
-		var context= new AnnotationConfigApplicationContext(Config.class);
-
-		Earth earth=context.getBean("earth",Earth.class);
+		ApplicationContext context = new ClassPathXmlApplicationContext("Config.xml");
+		Earth earth = context.getBean(Earth.class);
 		earth.name();
-
-		Earth earth2 = context.getBean("earth2", Earth.class);
-
-		earth2.name();
 	}
 
 }
