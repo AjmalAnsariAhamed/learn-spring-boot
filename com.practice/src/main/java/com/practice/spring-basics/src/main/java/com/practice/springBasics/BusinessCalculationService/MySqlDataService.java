@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
 public class MySqlDataService implements DataService{
     @Override
     public int[] retrieveData() {
-        return new int[]{1,2,3,4,5,6,7,9,10};
+        return new int[]{1,29,31,4,56,62,7,29,30};
     }
 }
