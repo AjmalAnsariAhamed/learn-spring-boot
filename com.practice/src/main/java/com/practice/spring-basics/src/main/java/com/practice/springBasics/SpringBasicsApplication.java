@@ -13,7 +13,7 @@ public class SpringBasicsApplication {
 
 	public static void main(String[] args) {
 try(var context= new AnnotationConfigApplicationContext(SpringBasicsApplication.class)){
-	System.out.println(Arrays.toString( context.getBeanDefinitionNames()));
+	Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
 	BusinessCalculationServiceRunner object= context.getBean(BusinessCalculationServiceRunner.class);
 	System.out.println(object.findMax());
 }
