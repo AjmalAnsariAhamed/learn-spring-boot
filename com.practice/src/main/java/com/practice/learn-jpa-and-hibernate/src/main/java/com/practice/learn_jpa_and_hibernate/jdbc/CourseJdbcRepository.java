@@ -20,6 +20,9 @@ public class CourseJdbcRepository {
     private static String selectQ= """
             select * from course where id=?
             """;
+    private static String updateQ= """
+            update course set name=?, author=? where id=?
+            """;
     public void insert(Course course){
         jdbcTemplate.update(insertQ,course.getId(),course.getName(),course.getAuthor());
 
@@ -30,5 +33,8 @@ public class CourseJdbcRepository {
     }
 public Course findById(long id ){
      return   jdbcTemplate.queryForObject(selectQ,new BeanPropertyRowMapper<>(Course.class),id);
+}
+public void update(Course course){
+jdbcTemplate.update(updateQ,course.getName(),course.getAuthor(),course.getId());
 }
 }
