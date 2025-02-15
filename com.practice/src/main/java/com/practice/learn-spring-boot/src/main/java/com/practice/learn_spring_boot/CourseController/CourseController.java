@@ -14,12 +14,12 @@ public class CourseController {
     @GetMapping("/health-check")
     public String healthCheck(){
 
-        return "all Okay";
+        return "all Okay and all happy and enjoy it mre and more";
     }
     @GetMapping(path = "/courses")
     public List<Courses> getAllCourses(){
         courses.addAll(Arrays.asList(new Courses(1,"Dragon ball z","Akira toriyama"),
-                new Courses(2,"Naruto","Masashi Kishimoto"),new Courses(3,"OnePiece","Eiichiro Oda")));
+                new Courses(2,"Naruto","Masashi Kishimoto"),new Courses(3,"OnePiece","Eiichiro Oda"),new Courses(5,"Gintama","Sorachi Hideaki"),new Courses(6,"HxH","Togashi")));
         return courses;
     }
     @PostMapping("/add")
