@@ -22,13 +22,14 @@ public class CourseCommandLineRunner implements CommandLineRunner {
         repository.save(new Course(2,"learnAws","Ranga"));
         repository.save(new Course(3,"learn python","Ranga"));
         repository.save(new Course(4,"Spring boot","Faisal memon"));
-        repository.save(new Course(5,"Rect js","Faisal memon"));
+        repository.save(new Course(5,"React js","Faisal memon"));
         //update
         repository.save(new Course(1,"in28Minutes","Ranga karunam"));
         repository.deleteById(3l);
         System.out.println(repository.findById(1l));
         System.out.println(repository.findById(2l));
         System.out.println(repository.findAll());
+        System.out.println(repository.findByAuthor("Faisal memon"));
 
 
 
