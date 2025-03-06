@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Entity
 public class Course {
     @Id
-    private long id;
+    private Long id;
 
     private String name;
     private String author;

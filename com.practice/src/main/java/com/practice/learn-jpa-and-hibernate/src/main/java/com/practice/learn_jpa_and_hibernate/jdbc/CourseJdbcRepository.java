@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-@Repository
+//@Repository
 public class CourseJdbcRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -34,7 +34,7 @@ public class CourseJdbcRepository {
         return jdbcTemplate.update(deleteQ, id);
     }
 
-    public Course findById(long id) {
+    public Course findById(Long id) {
         return jdbcTemplate.queryForObject(selectQ, new BeanPropertyRowMapper<>(Course.class), id);
     }
 
