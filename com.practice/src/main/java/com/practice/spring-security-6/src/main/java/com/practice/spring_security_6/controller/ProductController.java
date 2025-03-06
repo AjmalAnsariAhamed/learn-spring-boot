@@ -20,11 +20,11 @@ public class ProductController {
             new Product(2, "Mac Pro", 10999)
     ));
 
-    @GetMapping("get")
+    @GetMapping()
     public List<Product> getProducts() {
         return products;
     }
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<String> post(@RequestBody Product product){
         products.add(product);
         return ResponseEntity.ok("Okay");
