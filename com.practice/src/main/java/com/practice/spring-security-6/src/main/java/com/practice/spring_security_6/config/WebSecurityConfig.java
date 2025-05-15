@@ -16,29 +16,34 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf(csrf->csrf.disable()).authorizeHttpRequests(
-                req -> req.anyRequest().authenticated()
+        httpSecurity.csrf(csrf -> csrf.disable()).authorizeHttpRequests(
+                (req) ->
+                        req.requestMatchers("register").permitAll()
+                                .anyRequest().authenticated()
+
         ).formLogin(Customizer.withDefaults()).httpBasic(Customizer.withDefaults());
+        httpSecurity.httpBasic(Customizer.withDefaults());
 
         return httpSecurity.build();
 
     }
+
     @Bean
-    public UserDetailsService userDetailsService(){
-        UserDetails luffy= User.withUsername("luffy")
+    public UserDetailsService userDetailsService() {
+        UserDetails luffy = User.withUsername("luffy")
                 .password("{noop}pasword")
                 .roles("USER")
                 .build();
         //{noop} used because userDetails requires passwordEncoder
         //by using the {noop} says that no password encoder password won't be encoded
-        UserDetails zoro= User.withUsername("zoro")
+        UserDetails zoro = User.withUsername("zoro")
                 .password("{noop}three-swords")
                 .roles("USER")
                 .build();
         // the in-memory-user-details-manger is implementation of the user-details-service
         //there is method in userDetailsService called load by userDetails
         //it returns the UserDetails type which is needed for authentication
-        return new InMemoryUserDetailsManager(luffy,zoro);
+        return new InMemoryUserDetailsManager(luffy, zoro);
 
     }
 
